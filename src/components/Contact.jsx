@@ -29,26 +29,35 @@ export default function Contact({ onShowToast }) {
     setResponseMsg(null);
 
     try {
-      // Attempt to post to Express / MERN backend API
-      const res = await fetch('/api/contact', {
+      // Direct email delivery to dineshrajupadhya86@gmail.com via FormSubmit AJAX API
+      const res = await fetch('https://formsubmit.co/ajax/dineshrajupadhya86@gmail.com', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          _subject: `Portfolio Message from ${formData.name}: ${formData.subject || 'Inquiry'}`,
+          message: formData.message,
+          _template: 'table'
+        })
       });
 
-      if (res.ok) {
-        const data = await res.json();
+      const data = await res.json();
+      if (res.ok && (data.success === 'true' || data.success === true)) {
         setResponseMsg({
           type: 'success',
-          text: data.message || 'Thank you! Your message was received by the backend database.'
+          text: '✅ Message sent successfully! It has been delivered directly to Dinesh\'s email inbox.'
         });
         setFormData({ name: '', email: '', subject: '', message: '' });
-        onShowToast('🚀 Message received successfully!');
+        onShowToast('🚀 Message delivered directly to Dinesh\'s inbox!');
       } else {
-        throw new Error('Backend offline');
+        throw new Error(data.message || 'Delivery error');
       }
     } catch (err) {
-      // Fallback for static hosting / when backend server is not running
+      // Fallback for offline/client mailto
       const mailtoUrl = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
         formData.subject || 'Portfolio Inquiry'
       )}&body=${encodeURIComponent(
@@ -58,7 +67,7 @@ export default function Contact({ onShowToast }) {
 
       setResponseMsg({
         type: 'info',
-        text: `Your email client has been launched with your message. You can also write directly to ${personalInfo.email}.`
+        text: `Your email client has been launched. You can also write directly to ${personalInfo.email}.`
       });
       onShowToast('✉️ Opening email client...');
     } finally {
