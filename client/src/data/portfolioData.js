@@ -7,6 +7,7 @@ export const personalInfo = {
   whatsappUrl: "https://wa.me/918951318017?text=Hi%20Dinesh,%20I%20saw%20your%20portfolio...",
   linkedinUrl: "https://linkedin.com/in/dinesh-rajupadhya-920075206",
   githubUrl: "https://github.com/dineshrajupadhya",
+  portfolioUrl: "https://dineshrajupadhya.vercel.app",
   status: "Available for Full-Time Roles & Projects"
 };
 
