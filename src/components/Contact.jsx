@@ -158,7 +158,7 @@ export default function Contact({ onShowToast }) {
                   rel="noopener noreferrer"
                   className="text-sm font-semibold text-white hover:text-blue-400 transition-colors"
                 >
-                  linkedin.com/in/dinesh-raj-upadhya-920075206
+                  Connect on LinkedIn
                 </a>
               </div>
             </div>
@@ -167,6 +167,7 @@ export default function Contact({ onShowToast }) {
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs transition-colors"
+              title="Open LinkedIn Profile"
             >
               ↗
             </a>
