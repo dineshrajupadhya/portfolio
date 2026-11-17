@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinesh Raj Upadhya - Resume</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --bg: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-main);
+      background-color: #f1f5f9;
+      line-height: 1.5;
+      padding: 24px;
+    }
+    .resume-container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 48px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border-radius: 8px;
+    }
+    .actions-bar {
+      max-width: 850px;
+      margin: 0 auto 16px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0284c7;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #0369a1; }
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .btn-secondary:hover { background: #cbd5e1; }
+
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #0f172a;
+    }
+    .role-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-top: 4px;
+    }
+    .contact-info {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+    .contact-info a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .contact-info a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    section {
+      margin-bottom: 22px;
+    }
+    h2 {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #0284c7;
+      border-bottom: 1.5px solid #cbd5e1;
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+    }
+    .summary-text {
+      font-size: 13.5px;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    .skill-category {
+      font-size: 13.5px;
+      margin-bottom: 6px;
+      color: #334155;
+    }
+    .skill-category strong {
+      color: #0f172a;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+    .item-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .item-subtitle {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #475569;
+    }
+    .item-date {
+      font-size: 12.5px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-top: 6px;
+      margin-bottom: 14px;
+    }
+    li {
+      font-size: 13px;
+      color: #334155;
+      margin-bottom: 4px;
+      line-height: 1.55;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .actions-bar { display: none !important; }
+      .resume-container { box-shadow: none; padding: 0; max-width: 100%; }
+      h2 { border-color: #94a3b8; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="actions-bar">
+    <a href="../index.html" class="btn btn-secondary">← Back to Portfolio</a>
+    <button onclick="window.print()" class="btn">🖨️ Print or Save as PDF</button>
+  </div>
+
+  <div class="resume-container">
+    <header>
+      <h1>DINESH RAJ UPADHYA</h1>
+      <div class="role-title">Full-Stack Developer (MERN / React Native)</div>
+      <div class="contact-info">
+        <span>📍 Mangaluru / Bengaluru</span>
+        <span>•</span>
+        <span>📞 <a href="tel:+918951318017">+91 8951318017</a></span>
+        <span>•</span>
+        <span>✉️ <a href="mailto:dineshrajupadhya86@gmail.com">dineshrajupadhya86@gmail.com</a></span>
+        <span>•</span>
+        <span>🔗 <a href="https://linkedin.com/in/dinesh-rajupadhya-920075206" target="_blank" rel="noopener">linkedin.com/in/dinesh-rajupadhya-920075206</a></span>
+      </div>
+    </header>
+
+    <section>
+      <h2>Professional Summary</h2>
+      <p class="summary-text">
+        Full-stack developer skilled in React, React Native, Node.js, and Python, with hands-on experience building and shipping end-to-end web and mobile applications (MERN stack, native hardware integration). Strong grounding in software quality — STLC, API testing, and defect tracking — gained through applied QA work. Brings prior corporate experience coordinating technical hiring at TCS before transitioning into hands-on development through an MCA and targeted project work.
+      </p>
+    </section>
+
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skill-category"><strong>Frontend:</strong> React, React Native, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS</div>
+      <div class="skill-category"><strong>Backend:</strong> Node.js, Express, PHP, REST APIs, JWT Authentication, Socket.IO</div>
+      <div class="skill-category"><strong>Languages:</strong> Java, Python, JavaScript, C/C++, SQL</div>
+      <div class="skill-category"><strong>Databases:</strong> MongoDB, SQLite, RDBMS / SQL</div>
+      <div class="skill-category"><strong>Tools & DevOps:</strong> Git, GitHub, Docker, Jenkins, AWS (hands-on training), Postman</div>
+      <div class="skill-category"><strong>QA & Testing:</strong> Manual & Functional Testing, Selenium WebDriver, Pytest, Jira, Zephyr Scale</div>
+    </section>
+
+    <section>
+      <h2>Key Projects</h2>
+      
+      <div>
+        <div class="item-header">
+          <div class="item-title">PETPAL — Full-Stack Pet Care Platform</div>
+          <div class="item-subtitle">Personal Project (MERN)</div>
+        </div>
+        <ul>
+          <li>Built a full-stack MERN application for pet adoption, e-commerce, and pet health resources, with real-time chat via Socket.IO and secure authentication via JWT.</li>
+          <li>Designed the data model and REST API layer end-to-end; deployed and tested the full request/response cycle from React frontend to MongoDB backend.</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="item-header">
+          <div class="item-title">Contactless Restaurant Ordering System</div>
+          <div class="item-subtitle">Personal Project</div>
+        </div>
+        <ul>
+          <li>Built a QR-code-based ordering system using React, SQLite, and REST APIs, covering menu management, order placement, and status tracking.</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="item-header">
+          <div class="item-title">E-Commerce & Banking QA Suite</div>
+          <div class="item-subtitle">Applied Testing Project</div>
+        </div>
+        <ul>
+          <li>Authored 600+ functional test scenarios and 200+ integration test cases across e-commerce and banking platforms, uncovering 100+ defects; tracked and triaged issues in Jira.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Professional Experience</h2>
+      
+      <div>
+        <div class="item-header">
+          <div class="item-title">Mobile App Developer Intern <span style="font-weight: normal; color: #475569;">| Ukshati Technologies Pvt. Ltd.</span></div>
+          <div class="item-date">May 2025 – Aug 2025</div>
+        </div>
+        <ul>
+          <li>Built an offline-first valve control mobile app in React Native, integrating a custom Kotlin native module for USB-UART communication with STM32 microcontrollers.</li>
+          <li>Implemented real-time flow monitoring, zone-based valve grouping, and wireless control via a Raspberry Pi Pico W micro-server.</li>
+          <li>Documented architecture and integration decisions to support cross-functional maintenance of the hardware-software stack.</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="item-header">
+          <div class="item-title">Research Intern <span style="font-weight: normal; color: #475569;">| St Joseph Engineering College</span></div>
+          <div class="item-date">Oct 2024 – Nov 2024</div>
+        </div>
+        <ul>
+          <li>Built a Python ML pipeline (MNE, SciPy, PyEEG) for EEG signal analysis and real-time seizure detection, extracting 22+ features from real patient datasets.</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="item-header">
+          <div class="item-title">HR Executive <span style="font-weight: normal; color: #475569;">| Tata Consultancy Services (TCS)</span></div>
+          <div class="item-date">Aug 2021 – Mar 2023</div>
+        </div>
+        <ul>
+          <li>Coordinated end-to-end technical interview pipelines, panel scheduling, and candidate shortlisting for engineering hires.</li>
+          <li>Managed document verification, technical assessment setup, and cross-team stakeholder communication.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education & Certifications</h2>
+      
+      <div style="margin-bottom: 8px;">
+        <div class="item-header">
+          <div class="item-title">Master of Computer Applications (MCA)</div>
+          <div class="item-date">2023 – 2025</div>
+        </div>
+        <div class="item-subtitle">St Joseph Engineering College — CGPA 6.64</div>
+      </div>
+
+      <div style="margin-bottom: 12px;">
+        <div class="item-header">
+          <div class="item-title">Bachelor of Computer Applications (BCA)</div>
+          <div class="item-date">2018 – 2021</div>
+        </div>
+        <div class="item-subtitle">St. Aloysius College — CGPA 6.64</div>
+      </div>
+
+      <div class="skill-category">
+        <strong>Certifications:</strong> Software Testing Full Stack (Qspiders), Web Design Professional (Da Vinci Institute), Intro to Git/GitHub (Google), Principles of UI/UX Design (Meta).
+      </div>
+      <div class="skill-category">
+        <strong>Leadership:</strong> Inter-College IT Fest Event Head; Technovice Workshop Lead; 3rd Place, Inter-College IT Quiz.
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>
