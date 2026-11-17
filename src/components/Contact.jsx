@@ -158,7 +158,7 @@ export default function Contact({ onShowToast }) {
                   rel="noopener noreferrer"
                   className="text-sm font-semibold text-white hover:text-blue-400 transition-colors"
                 >
-                  linkedin.com/in/dinesh-rajupadhya
+                  linkedin.com/in/dinesh-raj-upadhya-920075206
                 </a>
               </div>
             </div>

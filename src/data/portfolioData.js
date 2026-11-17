@@ -5,7 +5,7 @@ export const personalInfo = {
   email: "dineshrajupadhya86@gmail.com",
   phone: "+91 8951318017",
   whatsappUrl: "https://wa.me/918951318017?text=Hi%20Dinesh,%20I%20saw%20your%20portfolio...",
-  linkedinUrl: "https://linkedin.com/in/dinesh-rajupadhya-920075206",
+  linkedinUrl: "https://www.linkedin.com/in/dinesh-raj-upadhya-920075206/",
   githubUrl: "https://github.com/dineshrajupadhya",
   portfolioUrl: "https://dineshrajupadhya.vercel.app",
   status: "Available for Full-Time Roles & Projects"

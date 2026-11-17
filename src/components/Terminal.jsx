@@ -57,7 +57,7 @@ I specialize in building performant, end-to-end web & mobile applications.
 • Email:    dineshrajupadhya86@gmail.com
 • Phone:    +91 8951318017
 • WhatsApp: https://wa.me/918951318017
-• LinkedIn: https://linkedin.com/in/dinesh-rajupadhya-920075206
+• LinkedIn: https://www.linkedin.com/in/dinesh-raj-upadhya-920075206/
 • Location: Mangaluru / Bengaluru, Karnataka, India`,
 
     hire: `Why Hire Dinesh?
