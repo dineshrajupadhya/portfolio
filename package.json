@@ -1,17 +1,24 @@
 {
-  "name": "dinesh-raj-upadhya-portfolio",
-  "version": "1.0.0",
-  "description": "Interactive developer portfolio for Dinesh Raj Upadhya - Full-Stack Developer",
-  "main": "index.html",
+  "name": "dinesh-raj-upadhya-portfolio-mern",
+  "version": "2.0.0",
+  "description": "Full-Stack MERN (React, Node, Express, MongoDB, Tailwind) Portfolio for Dinesh Raj Upadhya",
+  "private": true,
   "scripts": {
-    "start": "npx serve .",
-    "preview": "npx serve ."
+    "dev": "npm run client:dev",
+    "client:dev": "cd client && npm run dev",
+    "client:build": "cd client && npm run build",
+    "server:dev": "cd server && npm run dev",
+    "server:start": "cd server && npm start",
+    "build": "cd client && npm run build"
   },
   "keywords": [
-    "portfolio",
-    "developer",
-    "full-stack",
     "mern",
+    "react",
+    "node",
+    "express",
+    "mongodb",
+    "tailwind",
+    "portfolio",
     "react-native",
     "dinesh-raj-upadhya"
   ],
