@@ -6,6 +6,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
 import QaEdge from './components/QaEdge';
+import Faq from './components/Faq';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Particles from './components/Particles';
@@ -66,6 +67,7 @@ export default function App() {
         <Skills />
         <QaEdge />
         <Experience />
+        <Faq />
         <Contact onShowToast={showToast} />
       </main>
 

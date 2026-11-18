@@ -30,6 +30,7 @@ export default function Navbar({ isDark, onToggleTheme }) {
           <a href="#skills" className="hover:text-sky-400 transition-colors">Skills</a>
           <a href="#experience" className="hover:text-sky-400 transition-colors">Experience</a>
           <a href="#qa-edge" className="hover:text-sky-400 transition-colors">QA Rigor</a>
+          <a href="#faq" className="hover:text-sky-400 transition-colors">FAQ</a>
           <a href="#contact" className="hover:text-sky-400 transition-colors">Contact</a>
         </nav>
 
@@ -81,6 +82,7 @@ export default function Navbar({ isDark, onToggleTheme }) {
           <a href="#skills" onClick={() => setMobileMenuOpen(false)} className="block text-slate-200 font-medium">Technical Skills</a>
           <a href="#experience" onClick={() => setMobileMenuOpen(false)} className="block text-slate-200 font-medium">Experience & Education</a>
           <a href="#qa-edge" onClick={() => setMobileMenuOpen(false)} className="block text-slate-200 font-medium">Quality Rigor</a>
+          <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="block text-slate-200 font-medium">Recruiter FAQ</a>
           <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-slate-200 font-medium">Contact & Connect</a>
           <div className="pt-4 border-t border-slate-800 flex gap-3">
             <a href="/resume.html" target="_blank" className="flex-1 text-center py-2.5 rounded-lg bg-slate-800 text-slate-200 font-semibold text-sm">View Resume</a>

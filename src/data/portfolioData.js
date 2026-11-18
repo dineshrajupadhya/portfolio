@@ -32,6 +32,51 @@ export const projects = [
       "Built e-commerce checkout flow with cart state management and transaction order tracking.",
       "Implemented comprehensive API validation to ensure data integrity and prevent bad payloads."
     ],
+    codeSnippet: {
+      filename: "authMiddleware.js & socketHandler.js",
+      language: "javascript",
+      code: `// JWT Authentication Middleware & Socket.IO Real-Time Chat
+import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
+
+export const protect = async (req, res, next) => {
+  let token = req.headers.authorization?.startsWith('Bearer')
+    ? req.headers.authorization.split(' ')[1]
+    : null;
+
+  if (!token) {
+    return res.status(401).json({ error: 'Not authorized, no bearer token' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = await User.findById(decoded.id).select('-password');
+    next();
+  } catch (err) {
+    res.status(401).json({ error: 'Token expired or invalid signature' });
+  }
+};
+
+// WebSocket Chat Handler
+export const initializeChatSockets = (io) => {
+  io.on('connection', (socket) => {
+    socket.on('join_shelter_room', ({ shelterId, userId }) => {
+      socket.join(\`shelter_\${shelterId}\`);
+    });
+
+    socket.on('send_message', async ({ shelterId, message, senderId }) => {
+      const payload = { senderId, message, timestamp: new Date() };
+      io.to(\`shelter_\${shelterId}\`).emit('receive_message', payload);
+    });
+  });
+};`
+    },
+    systemFlow: [
+      { step: "1. Client (React)", desc: "User authenticates with JWT & connects to Socket.IO channel" },
+      { step: "2. API Gateway (Express)", desc: "Routes request through CORS & JWT token verification" },
+      { step: "3. Service Layer", desc: "Handles pet adoption matching & triggers real-time WebSocket events" },
+      { step: "4. Database (MongoDB)", desc: "Persists chat logs, pet medical records, and cart transactions" }
+    ],
     tech: ["React", "Node.js", "Express", "MongoDB", "Socket.IO", "JWT", "Tailwind CSS", "Postman"],
     icon: "🐾",
     gradient: "from-cyan-900/60 via-slate-900 to-indigo-950"
@@ -54,6 +99,50 @@ export const projects = [
       "Engineered zone-based valve grouping to trigger simultaneous automated irrigation cycles.",
       "Maintained sub-100ms command latency over USB serial communication.",
       "Authored hardware-software integration documentation for cross-functional engineering teams."
+    ],
+    codeSnippet: {
+      filename: "UsbUartBridgeModule.kt",
+      language: "kotlin",
+      code: `// React Native Native Module for USB-UART Serial to STM32
+package com.ukshati.valvecontrol
+
+import com.facebook.react.bridge.*
+import com.hoho.android.usbserial.driver.*
+
+class UsbUartBridgeModule(reactContext: ReactApplicationContext) : 
+    ReactContextBaseJavaModule(reactContext) {
+
+    private var port: UsbSerialPort? = null
+
+    override fun getName(): String = "UsbUartBridge"
+
+    @ReactMethod
+    fun sendValveCommand(valveId: Int, state: Boolean, promise: Promise) {
+        try {
+            // Protocol packet: [START_BYTE, VALVE_ID, STATE, CHECKSUM]
+            val command = byteArrayOf(0xAA.toByte(), valveId.toByte(), if (state) 1 else 0)
+            port?.write(command, 100) // 100ms timeout
+            
+            val response = ByteArray(16)
+            val bytesRead = port?.read(response, 200) ?: 0
+            
+            val map = Arguments.createMap().apply {
+                putBoolean("success", true)
+                putInt("valveId", valveId)
+                putInt("bytesRead", bytesRead)
+            }
+            promise.resolve(map)
+        } catch (e: Exception) {
+            promise.reject("UART_ERR", "Failed to communicate with STM32: \${e.message}")
+        }
+    }
+}`
+    },
+    systemFlow: [
+      { step: "1. Mobile UI (React Native)", desc: "Operator configures valve zones & sets scheduled flow volume" },
+      { step: "2. Kotlin Native Bridge", desc: "Serializes command packets & dispatches via Android USB host driver" },
+      { step: "3. Microcontroller (STM32)", desc: "Parses UART packets & actuates physical 24V solenoid relays" },
+      { step: "4. Micro-Server (Pico W)", desc: "Provides local Wi-Fi telemetry & real-time pressure sensor feedback" }
     ],
     tech: ["React Native", "Kotlin", "Android SDK", "USB-UART", "STM32", "Raspberry Pi Pico W", "C/C++"],
     icon: "📱",
@@ -78,6 +167,53 @@ export const projects = [
       "Designed clean and accessible touch-first UI using principles of UX design.",
       "Lightweight footprint easily deployable on local on-premise restaurant servers."
     ],
+    codeSnippet: {
+      filename: "orderController.js",
+      language: "javascript",
+      code: `// Table Order Dispatch & Kitchen Ticket Generator
+import db from '../config/database.js';
+
+export const createTableOrder = async (req, res) => {
+  const { tableNumber, items, totalAmount } = req.body;
+
+  if (!tableNumber || !items?.length) {
+    return res.status(400).json({ error: 'Missing table or items in order' });
+  }
+
+  try {
+    const orderQuery = \`
+      INSERT INTO orders (table_num, total, status, created_at)
+      VALUES (?, ?, 'QUEUED', datetime('now'))
+    \`;
+    const orderResult = await db.run(orderQuery, [tableNumber, totalAmount]);
+    const orderId = orderResult.lastID;
+
+    // Insert line items in batch
+    const itemStmt = await db.prepare(
+      \`INSERT INTO order_items (order_id, item_id, quantity, notes) VALUES (?, ?, ?, ?)\`
+    );
+    for (const item of items) {
+      await itemStmt.run([orderId, item.id, item.qty, item.notes || '']);
+    }
+    await itemStmt.finalize();
+
+    res.status(201).json({
+      success: true,
+      orderId,
+      tableNumber,
+      status: 'QUEUED'
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Database transaction error: ' + err.message });
+  }
+};`
+    },
+    systemFlow: [
+      { step: "1. Table QR Code", desc: "Customer scans table QR to open table-specific session with dynamic menu" },
+      { step: "2. Cart & Customization", desc: "Client-side cart state manages item modifiers & special instructions" },
+      { step: "3. Express API", desc: "Validates order payload and records atomic transaction into SQLite" },
+      { step: "4. Kitchen Display (KOT)", desc: "Kitchen screen updates immediately to show queued & in-prep orders" }
+    ],
     tech: ["React", "JavaScript", "SQLite", "Node.js", "REST APIs", "CSS3 / Tailwind"],
     icon: "🍽️",
     gradient: "from-amber-950/60 via-slate-900 to-stone-900"
@@ -98,6 +234,51 @@ export const projects = [
       "Extracted 22+ features from real clinical patient EEG time-series datasets.",
       "Significantly reduced signal artifacts and eye-blink noise using spatial ICA filtering.",
       "Documented mathematical model benchmarks for biomedical research review."
+    ],
+    codeSnippet: {
+      filename: "eeg_features.py",
+      language: "python",
+      code: `# EEG Preprocessing & Spectral Feature Extraction
+import numpy as np
+import scipy.signal as signal
+from scipy.stats import entropy
+
+def extract_eeg_features(raw_signal, sample_rate=256):
+    """
+    Filters raw EEG signal and extracts spectral entropy + band powers.
+    """
+    # 1. Bandpass filter between 0.5Hz and 60Hz
+    nyq = 0.5 * sample_rate
+    b, a = signal.butter(4, [0.5 / nyq, 60.0 / nyq], btype='band')
+    filtered = signal.filtfilt(b, a, raw_signal)
+
+    # 2. Compute Power Spectral Density via Welch's method
+    freqs, psd = signal.welch(filtered, fs=sample_rate, nperseg=sample_rate*2)
+
+    # 3. Frequency Band Extraction: Delta, Theta, Alpha, Beta, Gamma
+    bands = {'delta': (0.5, 4), 'theta': (4, 8), 'alpha': (8, 13), 'beta': (13, 30)}
+    band_powers = {}
+    total_power = np.sum(psd)
+
+    for band_name, (low, high) in bands.items():
+        idx = np.logical_and(freqs >= low, freqs <= high)
+        band_powers[f"{band_name}_rel"] = np.sum(psd[idx]) / total_power
+
+    # 4. Spectral Entropy computation
+    norm_psd = psd / np.sum(psd)
+    spec_entropy = entropy(norm_psd)
+
+    return {
+        "spectral_entropy": float(spec_entropy),
+        "band_powers": band_powers,
+        "is_anomaly_candidate": spec_entropy > 0.85
+    }`
+    },
+    systemFlow: [
+      { step: "1. Raw Clinical EEG", desc: "Ingestion of multi-channel time-series microvolt voltage readings" },
+      { step: "2. Signal Preprocessing", desc: "Butterworth bandpass (0.5-60Hz) & notch filtering for 50Hz noise" },
+      { step: "3. Feature Extraction", desc: "SciPy & PyEEG calculate 22+ spectral, fractal, and Hjorth metrics" },
+      { step: "4. Anomaly Classifier", desc: "Classification model predicts seizure markers with high sensitivity" }
     ],
     tech: ["Python", "MNE-Python", "SciPy", "PyEEG", "NumPy", "Pandas", "Matplotlib"],
     icon: "🧠",
@@ -121,9 +302,71 @@ export const projects = [
       "Achieved extensive test coverage across payment gateway integration and user authentication.",
       "Standardized STLC documentation, requirement traceability matrix (RTM), and bug reports."
     ],
+    codeSnippet: {
+      filename: "test_payment_gateway.py",
+      language: "python",
+      code: `# Automated Integration Test Suite with Pytest & Selenium
+import pytest
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+@pytest.mark.regression
+class TestPaymentIntegration:
+
+    @pytest.fixture(autouse=True)
+    def setup_browser(self, driver):
+        self.driver = driver
+        self.wait = WebDriverWait(self.driver, 10)
+
+    def test_idempotent_checkout_prevents_duplicate_charge(self):
+        """Verify duplicate submit clicks cannot trigger double transactions."""
+        self.driver.get("https://app.staging/checkout")
+
+        pay_btn = self.wait.until(EC.element_to_be_clickable((By.ID, "pay-submit-btn")))
+        
+        # Click pay button and immediately attempt rapid secondary click
+        pay_btn.click()
+        assert not pay_btn.is_enabled(), "Security Failure: Button was not disabled on click"
+
+        # Assert confirmation modal displays unique transaction reference
+        confirmation = self.wait.until(
+            EC.visibility_of_element_located((By.CLASS_NAME, "tx-reference-id"))
+        )
+        assert confirmation.text.startswith("TXN_"), "Invalid transaction ID format"`
+    },
+    systemFlow: [
+      { step: "1. Test Plan & Scenarios", desc: "600+ functional & 200+ integration cases authored with RTM matrix" },
+      { step: "2. Automated Pytest Runner", desc: "Selenium executes regression batches across multiple viewport sizes" },
+      { step: "3. API Contract Validation", desc: "Postman validates status codes (200, 401, 422), schemas, and tokens" },
+      { step: "4. Jira Defect Triage", desc: "100+ uncovered defects categorized by severity and tracked to resolution" }
+    ],
     tech: ["Selenium WebDriver", "Pytest", "Python", "Postman", "Jira", "Zephyr Scale", "STLC", "SQL"],
     icon: "🧪",
     gradient: "from-pink-950/60 via-slate-900 to-rose-950"
+  }
+];
+
+export const faqs = [
+  {
+    q: "Are you available for immediate joining?",
+    a: "Yes! Having graduated with my Master of Computer Applications (MCA), I am available to join immediately with zero notice period delay for full-time software engineering roles or contract engagements."
+  },
+  {
+    q: "What work locations and arrangements are you open to?",
+    a: "I am based in Mangaluru / Bengaluru and am fully open to on-site, hybrid, or remote positions. I am also flexible to relocate to major tech hubs across India for the right engineering opportunity."
+  },
+  {
+    q: "How does your prior technical hiring experience at TCS help you as an engineer?",
+    a: "Before completing my MCA, I coordinated technical hiring pipelines at Tata Consultancy Services (TCS). This gave me an insider understanding of corporate engineering standards, stakeholder communication, cross-functional collaboration, and why readable, maintainable software architecture matters far more than hasty workarounds."
+  },
+  {
+    q: "What are your primary technical strengths?",
+    a: "My core expertise is full-stack web development with the MERN stack (MongoDB, Express, React, Node.js) and mobile engineering with React Native. Additionally, I have hands-on experience integrating native Kotlin modules for microcontrollers (STM32, Raspberry Pi Pico W) and building signal processing pipelines in Python."
+  },
+  {
+    q: "Why hire a developer with a software testing & QA background?",
+    a: "Most developers write code solely for the 'happy path'. With full-stack QA certification and over 800 test cases authored across banking and retail systems, I build software anticipating edge cases, race conditions, and boundary values from day one. This leads to cleaner APIs, robust input validation, and significantly fewer production defects."
   }
 ];
 
