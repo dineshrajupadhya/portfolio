@@ -39,22 +39,33 @@ export default function Contact({ onShowToast }) {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
+          _replyto: formData.email,
           _subject: `Portfolio Message from ${formData.name}: ${formData.subject || 'Inquiry'}`,
           message: formData.message,
-          _template: 'table'
+          _template: 'table',
+          _captcha: 'false'
         })
       });
 
       const data = await res.json();
+      console.log('FormSubmit response:', data);
+
       if (res.ok && (data.success === 'true' || data.success === true)) {
         setResponseMsg({
           type: 'success',
-          text: '✅ Message sent successfully! It has been delivered directly to Dinesh\'s email inbox.'
+          text: '✅ Message sent successfully! It has been delivered directly to Dinesh\'s Gmail inbox.'
         });
         setFormData({ name: '', email: '', subject: '', message: '' });
         onShowToast('🚀 Message delivered directly to Dinesh\'s inbox!');
       } else {
-        throw new Error(data.message || 'Delivery error');
+        if (data.message && data.message.toLowerCase().includes('activate')) {
+          setResponseMsg({
+            type: 'info',
+            text: '⚠️ First-time setup: FormSubmit has sent an activation link to dineshrajupadhya86@gmail.com. Please check your Gmail (including Spam folder) and click "Activate Form" once to start receiving messages directly!'
+          });
+        } else {
+          throw new Error(data.message || 'Delivery error');
+        }
       }
     } catch (err) {
       // Fallback for offline/client mailto
