@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function QaEdge() {
   return (
-    <section id="qa-edge" className="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-      <div className="glass-panel p-8 sm:p-12 rounded-3xl relative overflow-hidden border border-sky-500/30">
+    <section id="qa-edge" className="pt-12 pb-6 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      <div className="glass-panel p-8 sm:p-10 rounded-3xl relative overflow-hidden border border-sky-500/30">
         <div className="absolute -top-24 -right-24 w-80 h-80 bg-gradient-to-br from-sky-500/10 via-indigo-500/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -48,6 +48,41 @@ export default function QaEdge() {
             </div>
           </div>
         </div>
+
+        {/* Bottom QA Breakdown Strip */}
+        <div className="mt-8 pt-6 border-t border-slate-800/80 grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+          <div className="p-4 rounded-2xl bg-slate-900/70 border border-slate-800/80 hover:border-sky-500/40 transition-colors">
+            <div className="text-xs font-mono text-sky-400 mb-1 flex items-center gap-1.5">
+              <span>🛒</span>
+              <span>Live Tested Platform</span>
+            </div>
+            <div className="text-sm font-bold text-white">ShoppersStack.com</div>
+            <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">
+              Full retail user journey coverage, cart session persistence & payment double-submission defenses.
+            </p>
+          </div>
+          <div className="p-4 rounded-2xl bg-slate-900/70 border border-slate-800/80 hover:border-emerald-500/40 transition-colors">
+            <div className="text-xs font-mono text-emerald-400 mb-1 flex items-center gap-1.5">
+              <span>🐛</span>
+              <span>Defect Discovery</span>
+            </div>
+            <div className="text-sm font-bold text-white">100+ Triaged in Jira</div>
+            <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">
+              Authored clear reproduction steps, severity matrix, and Root Cause Analysis (RCA) for developers.
+            </p>
+          </div>
+          <div className="p-4 rounded-2xl bg-slate-900/70 border border-slate-800/80 hover:border-purple-500/40 transition-colors">
+            <div className="text-xs font-mono text-purple-400 mb-1 flex items-center gap-1.5">
+              <span>⚡</span>
+              <span>Automation Framework</span>
+            </div>
+            <div className="text-sm font-bold text-white">Selenium & Pytest (POM)</div>
+            <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">
+              Page Object Model automated regression suite + Postman API contract verification collections.
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
   );

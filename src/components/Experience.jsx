@@ -5,18 +5,18 @@ export default function Experience() {
   const [activeTab, setActiveTab] = useState('experience');
 
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-      <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-3">
+    <section id="experience" className="pt-8 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <div className="text-center mb-8">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">
           Track Record
         </div>
         <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight">Experience & Education</h2>
-        <p className="text-slate-400 mt-3 text-sm sm:text-base">
+        <p className="text-slate-400 mt-2 text-sm sm:text-base">
           A blend of hands-on software development, machine learning research, and corporate talent operations.
         </p>
 
         {/* Tab Switcher */}
-        <div className="inline-flex p-1.5 rounded-2xl bg-slate-900 border border-slate-800 mt-8">
+        <div className="inline-flex p-1.5 rounded-2xl bg-slate-900 border border-slate-800 mt-6">
           <button
             onClick={() => setActiveTab('experience')}
             className={`px-6 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
