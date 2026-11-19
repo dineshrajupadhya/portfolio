@@ -40,11 +40,27 @@ export default function Hero() {
       <div className="max-w-5xl mx-auto text-center">
         
         {/* Availability Badge */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/80 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-medium mb-8 backdrop-blur-md shadow-inner">
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/80 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-medium mb-6 backdrop-blur-md shadow-inner">
           <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 pulse-emerald"></span>
           <span>{personalInfo.status}</span>
           <span className="text-slate-500">•</span>
           <span className="text-slate-400">{personalInfo.location.split(',')[0]} & Remote</span>
+        </div>
+
+        {/* Profile Headshot */}
+        <div className="relative w-32 h-32 sm:w-36 sm:h-36 mx-auto mb-6 group">
+          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-400 via-indigo-500 to-purple-500 blur-xl opacity-60 group-hover:opacity-100 transition-opacity"></div>
+          <div className="relative w-full h-full rounded-full p-1 bg-gradient-to-tr from-sky-400 via-indigo-500 to-purple-500 shadow-2xl overflow-hidden">
+            <img
+              src="/Profile.jpg"
+              alt="Dinesh Raj Upadhya"
+              className="w-full h-full object-cover rounded-full"
+            />
+          </div>
+          <div
+            className="absolute bottom-1 right-1 sm:bottom-2 sm:right-2 w-4 h-4 rounded-full bg-emerald-500 border-2 border-slate-900 shadow-md pulse-emerald"
+            title="Available for hire"
+          ></div>
         </div>
 
         {/* Main Title */}
