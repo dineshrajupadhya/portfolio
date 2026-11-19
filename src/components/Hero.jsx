@@ -112,24 +112,24 @@ export default function Hero() {
         {/* Floating Quick Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
           <div className="glass-panel p-5 rounded-2xl glow-card">
-            <div className="text-3xl font-extrabold text-sky-400 font-mono mb-1">3+ Yrs</div>
-            <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">Industry & Dev</div>
-            <div className="text-xs text-slate-500 mt-1">Tech hiring @ TCS + Engineering</div>
+            <div className="text-3xl font-extrabold text-emerald-400 font-mono mb-1">0 Days</div>
+            <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">Notice Period</div>
+            <div className="text-xs text-slate-500 mt-1">Available to join immediately</div>
+          </div>
+          <div className="glass-panel p-5 rounded-2xl glow-card">
+            <div className="text-3xl font-extrabold text-sky-400 font-mono mb-1">1.8 Yrs</div>
+            <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">Corporate Exp</div>
+            <div className="text-xs text-slate-500 mt-1">Technical hiring @ TCS</div>
           </div>
           <div className="glass-panel p-5 rounded-2xl glow-card">
             <div className="text-3xl font-extrabold text-indigo-400 font-mono mb-1">5+</div>
-            <div class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Flagship Projects</div>
+            <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">Flagship Projects</div>
             <div className="text-xs text-slate-500 mt-1">MERN, Mobile IoT, ML, QA</div>
           </div>
           <div className="glass-panel p-5 rounded-2xl glow-card">
-            <div className="text-3xl font-extrabold text-emerald-400 font-mono mb-1">800+</div>
+            <div className="text-3xl font-extrabold text-purple-400 font-mono mb-1">800+</div>
             <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">QA Test Cases</div>
             <div className="text-xs text-slate-500 mt-1">Selenium, Pytest & Jira triaged</div>
-          </div>
-          <div className="glass-panel p-5 rounded-2xl glow-card">
-            <div className="text-3xl font-extrabold text-purple-400 font-mono mb-1">100%</div>
-            <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">Quality Focused</div>
-            <div className="text-xs text-slate-500 mt-1">Robust, tested & maintainable</div>
           </div>
         </div>
 
