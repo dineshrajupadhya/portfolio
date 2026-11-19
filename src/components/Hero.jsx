@@ -37,7 +37,8 @@ export default function Hero() {
   }, [subText, isDeleting, wordIndex]);
 
   return (
-    <section id="hero" className="min-h-[88vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16">
+    <section id="hero" className="min-h-[88vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 relative">
+      <div id="about" className="absolute -top-24"></div>
       <div className="max-w-5xl mx-auto text-center">
         
         {/* Availability Badge */}
