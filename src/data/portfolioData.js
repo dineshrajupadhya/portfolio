@@ -286,62 +286,89 @@ def extract_eeg_features(raw_signal, sample_rate=256):
   },
   {
     id: "qasuite",
-    title: "E-Commerce & Banking Enterprise QA Suite",
+    title: "ShoppersStack E-Commerce & Banking QA Test Suite",
     category: "qa",
     categoryLabel: "QA & Test Engineering",
-    badge: "Selenium WebDriver • Pytest • Jira • Zephyr • Postman",
-    description: "A comprehensive manual and automated quality assurance suite authored for mission-critical e-commerce checkout and banking transaction platforms.",
+    badge: "ShoppersStack • Selenium • Pytest • Jira • STLC",
+    liveUrl: "https://www.shoppersstack.com/",
+    liveLabel: "Tested Platform: ShoppersStack",
+    description: "Comprehensive quality assurance and defect discovery testing suite executed for ShoppersStack (live retail e-commerce platform at shoppersstack.com) alongside simulated banking payment modules. Authored 600+ functional, integration, and system test scenarios, uncovering and triaging 100+ defects in Jira.",
     architecture: [
-      "Test Architecture: Authored 600+ functional test scenarios and 200+ end-to-end integration test cases covering happy path, negative edge cases, boundary values, and race conditions.",
-      "Automation Framework: Pytest and Selenium WebDriver scripts for regression suites and automated form validations.",
-      "API Verification: Automated Postman collections verifying HTTP response status codes, payload contract schemas, JWT expirations, and rate limits.",
-      "Defect Lifecycle: Logged, prioritized, and tracked 100+ critical bugs using Jira and Zephyr Scale."
+      "ShoppersStack E-Commerce Test Design: Authored comprehensive test scenarios across ShoppersStack modules including User & Merchant Registration, Product Search Filters, Cart Persistence, Promo Code Validations, and Checkout.",
+      "System & Integration Testing: Validated end-to-end data integrity across ShoppersStack frontend, REST API layers, and simulated banking transactions under edge-case inputs.",
+      "Automated Regression Framework: Built automated test suites in Python using Pytest and Selenium WebDriver with explicit waits and Page Object Model (POM) design patterns.",
+      "API Verification with Postman: Executed automated API validation collections verifying HTTP status codes (200, 400, 401, 404, 500), payload contracts, token expiry, and payload injection defenses.",
+      "Defect Lifecycle & Triage: Logged, prioritized, and tracked 100+ critical bugs discovered on ShoppersStack using Jira and Zephyr Scale, authoring detailed reproduction steps and Root Cause Analysis (RCA)."
     ],
     highlights: [
-      "Uncovered and triaged 100+ critical defects before production releases.",
-      "Achieved extensive test coverage across payment gateway integration and user authentication.",
-      "Standardized STLC documentation, requirement traceability matrix (RTM), and bug reports."
+      "Discovered and triaged 100+ critical defects on the live ShoppersStack e-commerce platform.",
+      "Authored 600+ functional test scenarios and 200+ integration and system test cases.",
+      "Constructed Requirement Traceability Matrix (RTM) linking customer user stories to test suites.",
+      "Automated critical regression workflows with Selenium WebDriver reducing manual verification overhead."
     ],
     codeSnippet: {
-      filename: "test_payment_gateway.py",
+      filename: "test_shoppersstack_checkout.py",
       language: "python",
-      code: `# Automated Integration Test Suite with Pytest & Selenium
+      code: `# Automated Regression Test Suite for ShoppersStack E-Commerce
+# Target Platform: https://www.shoppersstack.com/
 import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 @pytest.mark.regression
-class TestPaymentIntegration:
+class TestShoppersStackE2E:
+    """End-to-end test validation for ShoppersStack catalog and checkout."""
 
     @pytest.fixture(autouse=True)
     def setup_browser(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(self.driver, 10)
+        self.driver.maximize_window()
+        self.wait = WebDriverWait(self.driver, 12)
+        self.base_url = "https://www.shoppersstack.com"
 
-    def test_idempotent_checkout_prevents_duplicate_charge(self):
-        """Verify duplicate submit clicks cannot trigger double transactions."""
-        self.driver.get("https://app.staging/checkout")
+    def test_search_and_cart_persistence(self):
+        """Verify product search filtering and cart persistence across guest sessions."""
+        self.driver.get(f"{self.base_url}/products")
 
-        pay_btn = self.wait.until(EC.element_to_be_clickable((By.ID, "pay-submit-btn")))
-        
-        # Click pay button and immediately attempt rapid secondary click
-        pay_btn.click()
-        assert not pay_btn.is_enabled(), "Security Failure: Button was not disabled on click"
+        # 1. Search for category item
+        search_box = self.wait.until(EC.element_to_be_clickable((By.ID, "search")))
+        search_box.clear()
+        search_box.send_keys("Electronics")
+        search_btn = self.driver.find_element(By.ID, "searchBtn")
+        search_btn.click()
 
-        # Assert confirmation modal displays unique transaction reference
-        confirmation = self.wait.until(
-            EC.visibility_of_element_located((By.CLASS_NAME, "tx-reference-id"))
+        # 2. Assert search results render matching cards
+        product_cards = self.wait.until(
+            EC.presence_of_all_elements_located((By.CLASS_NAME, "featuredProducts_card__"))
         )
-        assert confirmation.text.startswith("TXN_"), "Invalid transaction ID format"`
+        assert len(product_cards) > 0, "Defect: No products returned for valid category query"
+
+        # 3. Add item to cart and assert badge counter increments
+        add_to_cart_btn = product_cards[0].find_element(By.TAG_NAME, "button")
+        add_to_cart_btn.click()
+
+        cart_badge = self.wait.until(
+            EC.visibility_of_element_located((By.ID, "cart-badge-count"))
+        )
+        assert cart_badge.text == "1", "Defect: Cart badge failed to increment after adding item"
+
+    def test_idempotent_payment_prevents_duplicate_charge(self):
+        """Verify checkout submit button disables instantly to prevent duplicate transactions."""
+        self.driver.get(f"{self.base_url}/checkout")
+        pay_btn = self.wait.until(EC.element_to_be_clickable((By.ID, "place-order-btn")))
+        
+        # Click pay button and assert immediate disabled state
+        pay_btn.click()
+        assert not pay_btn.is_enabled(), "Critical Defect: Double submission vulnerability detected"`
     },
     systemFlow: [
-      { step: "1. Test Plan & Scenarios", desc: "600+ functional & 200+ integration cases authored with RTM matrix" },
-      { step: "2. Automated Pytest Runner", desc: "Selenium executes regression batches across multiple viewport sizes" },
-      { step: "3. API Contract Validation", desc: "Postman validates status codes (200, 401, 422), schemas, and tokens" },
-      { step: "4. Jira Defect Triage", desc: "100+ uncovered defects categorized by severity and tracked to resolution" }
+      { step: "1. ShoppersStack Requirements Analysis", desc: "Analyzed business requirements across ShoppersStack user & merchant roles to construct RTM" },
+      { step: "2. Scenario & Test Case Authoring", desc: "Authored 600+ functional and 200+ integration/system test cases covering boundary values & edge cases" },
+      { step: "3. Automation & API Validation", desc: "Executed Pytest/Selenium regression suites and Postman API contract verifications" },
+      { step: "4. Defect Reporting & Jira Triage", desc: "Uncovered 100+ defects on ShoppersStack; documented reproduction steps and severity in Jira" }
     ],
-    tech: ["Selenium WebDriver", "Pytest", "Python", "Postman", "Jira", "Zephyr Scale", "STLC", "SQL"],
+    tech: ["ShoppersStack", "Selenium WebDriver", "Pytest", "Python", "Postman", "Jira", "Zephyr Scale", "STLC", "SQL"],
     icon: "🧪",
     gradient: "from-pink-950/60 via-slate-900 to-rose-950"
   }

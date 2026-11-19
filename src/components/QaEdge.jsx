@@ -15,7 +15,7 @@ export default function QaEdge() {
               Why A Developer With QA Rigor Delivers 3x Better Code
             </h3>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
-              Most developers write code to satisfy the happy path. With certified full-stack software testing training (Qspiders), 800+ test cases authored across banking and e-commerce, and hands-on Pytest/Selenium automation:
+              Most developers write code to satisfy the happy path. With certified full-stack software testing training (Qspiders), 800+ test cases authored across <strong className="text-white">ShoppersStack e-commerce</strong> and banking platforms, and hands-on Pytest/Selenium automation:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-300">
               <div className="flex items-start gap-2">

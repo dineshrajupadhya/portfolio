@@ -94,15 +94,27 @@ export default function Projects() {
             </div>
 
             {/* Actions */}
-            <div className="p-6 pt-0 border-t border-slate-800/80 flex items-center justify-between gap-3 mt-auto">
+            <div className="p-6 pt-0 border-t border-slate-800/80 flex items-center justify-between gap-2 mt-auto">
               <button
                 onClick={() => setActiveProject(p)}
                 className="flex-1 py-2.5 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 text-sky-400 text-xs font-semibold transition-all flex items-center justify-center gap-1.5"
               >
-                <span>🔍 Architecture Details</span>
+                <span>🔍 Details & Code</span>
               </button>
+              {p.liveUrl && (
+                <a
+                  href={p.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2.5 py-2.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-300 text-xs font-semibold transition-all flex items-center gap-1"
+                  title={`Open ${p.liveLabel || 'Live Site'}`}
+                >
+                  <span>🌐</span>
+                  <span className="hidden sm:inline text-[11px]">Site</span>
+                </a>
+              )}
               <a
-                href="https://github.com/dineshrajupadhya"
+                href={p.githubUrl || "https://github.com/dineshrajupadhya"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-all"

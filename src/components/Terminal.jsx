@@ -43,7 +43,7 @@ I specialize in building performant, end-to-end web & mobile applications.
 2. Valve Control App — Offline-first React Native + Kotlin native USB-UART module for STM32
 3. Contactless Restaurant Ordering — QR code digital menu & order lifecycle with React & SQLite
 4. EEG Seizure Detection Pipeline — Python ML signal processing with MNE & PyEEG
-5. E-Commerce & Banking QA Suite — 600+ test scenarios, 200+ integration cases in Jira`,
+5. ShoppersStack QA Suite — 600+ test scenarios, 200+ integration cases on shoppersstack.com with 100+ defects triaged in Jira`,
 
     experience: `Professional Experience:
 • Ukshati Technologies Pvt. Ltd. (May 2025 – Aug 2025)

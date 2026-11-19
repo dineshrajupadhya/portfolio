@@ -34,11 +34,21 @@ export default function ProjectModal({ project, onClose }) {
 
         <div>
           {/* Header */}
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex flex-wrap items-center gap-2 mb-2">
             <span className="text-2xl">{project.icon}</span>
             <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-sky-500/20 text-sky-300 border border-sky-500/30">
               {project.badge}
             </span>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 transition-colors flex items-center gap-1.5"
+              >
+                <span>🌐</span> {project.liveLabel || 'Visit Platform'} ↗
+              </a>
+            )}
           </div>
 
           <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-2">{project.title}</h3>
@@ -183,15 +193,27 @@ export default function ProjectModal({ project, onClose }) {
         </div>
 
         {/* Footer Actions */}
-        <div className="mt-8 pt-5 border-t border-slate-800 flex items-center justify-between">
-          <a
-            href={project.githubUrl || "https://github.com/dineshrajupadhya"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-all flex items-center gap-1.5"
-          >
-            <span>💻</span> View on GitHub ↗
-          </a>
+        <div className="mt-8 pt-5 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <a
+              href={project.githubUrl || "https://github.com/dineshrajupadhya"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-all flex items-center gap-1.5"
+            >
+              <span>💻</span> View on GitHub ↗
+            </a>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-300 text-xs font-semibold transition-all flex items-center gap-1.5"
+              >
+                <span>🌐</span> {project.liveLabel || 'Visit Platform'} ↗
+              </a>
+            )}
+          </div>
           <a
             href="#contact"
             onClick={onClose}
