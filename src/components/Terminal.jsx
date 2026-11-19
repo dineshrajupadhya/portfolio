@@ -13,7 +13,7 @@ export default function Terminal({ onToggleTheme }) {
   const commands = {
     help: `Available commands:
   about        - Background, passion, and engineering focus
-  skills       - Full overview of technical stack & tools (MERN, Mobile, QA)
+  skills       - Full overview of technical stack & tools (MERN, Mobile, AI/ML, QA)
   projects     - Highlights of flagship production & personal apps
   experience   - Career history (Ukshati Tech, SJEC Research, TCS)
   contact      - Direct phone, email, LinkedIn, & WhatsApp
@@ -22,21 +22,23 @@ export default function Terminal({ onToggleTheme }) {
   clear        - Clear terminal output
   theme        - Toggle Dark / Light theme`,
 
-    about: `Dinesh Raj Upadhya | Full-Stack Developer (MERN / React Native)
+    about: `Dinesh Raj Upadhya | Full-Stack Developer (MERN / React Native / AI & ML)
 Location: Mangaluru / Bengaluru, India.
 
-I specialize in building performant, end-to-end web & mobile applications.
+I specialize in building performant, end-to-end web, mobile & machine learning applications.
 • Bridging high-impact frontend UX (React / React Native) with robust backend services (Node.js, Express, MongoDB, REST/WebSockets).
-• Unique edge: Native hardware integration experience (Kotlin native modules, USB-UART STM32 microcontrollers, Raspberry Pi Pico W).
-• Deep software testing rigor (STLC, Selenium, Pytest, Jira) paired with past corporate recruiting coordination at Tata Consultancy Services (TCS).`,
+• AI & Machine Learning: Signal processing pipelines (Python, SciPy, MNE, PyEEG) and feature extraction for real-time anomaly detection.
+• Native hardware integration: Kotlin native modules, USB-UART STM32 microcontrollers, Raspberry Pi Pico W.
+• Deep software testing rigor: STLC, Selenium, Pytest, Jira paired with prior corporate recruiting coordination at Tata Consultancy Services (TCS).`,
 
     skills: `Tech Stack & Competencies:
 • Frontend: React.js, React Native, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS
 • Backend: Node.js, Express.js, REST APIs, JWT Auth, Socket.IO, PHP
+• AI & Machine Learning: Machine Learning (ML), Artificial Intelligence (AI), Python ML (Scikit-Learn, SciPy), NumPy, Pandas, MNE, PyEEG, Signal Processing & Feature Extraction
 • Languages: JavaScript, Python, Java, Kotlin (Native modules), C/C++, SQL
 • Databases: MongoDB, SQLite, RDBMS / SQL
-• DevOps & Tools: Git, GitHub, Docker, Jenkins, Postman, AWS (hands-on)
-• Quality & Testing: STLC, Manual Testing, Selenium WebDriver, Pytest, Jira, Zephyr Scale`,
+• Hardware & IoT: STM32, USB-UART, Raspberry Pi Pico W, Android Native Bridge
+• DevOps & Testing: Git, GitHub, Docker, Jenkins, Postman, Selenium WebDriver, Pytest, Jira, Zephyr Scale`,
 
     projects: `Featured Projects:
 1. PETPAL — Full-Stack MERN Pet Adoption Platform (Socket.IO chat, JWT auth, MongoDB)

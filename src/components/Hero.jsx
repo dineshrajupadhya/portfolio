@@ -5,6 +5,7 @@ export default function Hero() {
   const words = [
     "Full-Stack Developer (MERN)",
     "React Native Mobile Engineer",
+    "AI & Machine Learning Engineer",
     "Hardware-Integrated App Specialist",
     "Software QA & Automation Advocate"
   ];
@@ -78,7 +79,7 @@ export default function Hero() {
 
         {/* Summary */}
         <p className="max-w-3xl mx-auto text-base sm:text-lg text-slate-400 leading-relaxed mb-10">
-          Bridging full-stack web platforms (<strong className="text-slate-200 font-semibold">MERN Stack</strong>), cross-platform mobile apps (<strong className="text-slate-200 font-semibold">React Native + Native Hardware Modules</strong>), and machine learning pipelines with enterprise-grade <strong className="text-slate-200 font-semibold">Software Quality rigor</strong>. Prior corporate experience at <strong className="text-slate-200 font-semibold">TCS</strong> coordinating technical hiring.
+          Bridging full-stack web platforms (<strong className="text-slate-200 font-semibold">MERN Stack</strong>), cross-platform mobile apps (<strong className="text-slate-200 font-semibold">React Native + Native Hardware Modules</strong>), and <strong className="text-slate-200 font-semibold">Machine Learning & AI</strong> signal pipelines with enterprise-grade <strong className="text-slate-200 font-semibold">Software Quality rigor</strong>. Prior corporate experience at <strong className="text-slate-200 font-semibold">TCS</strong> coordinating technical hiring.
         </p>
 
         {/* CTAs */}

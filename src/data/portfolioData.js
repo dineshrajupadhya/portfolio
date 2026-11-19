@@ -222,9 +222,9 @@ export const createTableOrder = async (req, res) => {
     id: "eegdetection",
     title: "EEG Signal Analysis & Real-Time Seizure Detection Pipeline",
     category: "ml",
-    categoryLabel: "Machine Learning",
-    badge: "Python • MNE • SciPy • PyEEG • Signal Processing",
-    description: "A specialized biomedical machine learning pipeline engineered at St Joseph Engineering College to ingest raw multi-channel electroencephalogram (EEG) recordings and classify epileptic seizure markers.",
+    categoryLabel: "AI & Machine Learning",
+    badge: "Python • MNE • SciPy • PyEEG • AI & Signal Processing",
+    description: "A specialized biomedical machine learning and artificial intelligence pipeline engineered at St Joseph Engineering College to ingest raw multi-channel electroencephalogram (EEG) recordings and classify epileptic seizure markers.",
     architecture: [
       "Signal Preprocessing: Ingestion of clinical EEG time-series, bandpass filtering (0.5Hz - 60Hz), and notch filtering to eliminate 50Hz electrical mains noise.",
       "Feature Engineering: Extracted 22+ mathematical and spectral features including Spectral Entropy, Petrosian Fractal Dimension, Hjorth parameters, and relative band power.",
@@ -280,7 +280,7 @@ def extract_eeg_features(raw_signal, sample_rate=256):
       { step: "3. Feature Extraction", desc: "SciPy & PyEEG calculate 22+ spectral, fractal, and Hjorth metrics" },
       { step: "4. Anomaly Classifier", desc: "Classification model predicts seizure markers with high sensitivity" }
     ],
-    tech: ["Python", "MNE-Python", "SciPy", "PyEEG", "NumPy", "Pandas", "Matplotlib"],
+    tech: ["Python", "Machine Learning", "AI", "MNE-Python", "SciPy", "PyEEG", "NumPy", "Pandas", "Matplotlib"],
     icon: "🧠",
     gradient: "from-purple-950/60 via-slate-900 to-indigo-950"
   },
@@ -389,7 +389,7 @@ export const faqs = [
   },
   {
     q: "What are your primary technical strengths?",
-    a: "My core expertise is full-stack web development with the MERN stack (MongoDB, Express, React, Node.js) and mobile engineering with React Native. Additionally, I have hands-on experience integrating native Kotlin modules for microcontrollers (STM32, Raspberry Pi Pico W) and building signal processing pipelines in Python."
+    a: "My core expertise is full-stack web development with the MERN stack (MongoDB, Express, React, Node.js) and mobile engineering with React Native. Additionally, I have hands-on experience in Artificial Intelligence & Machine Learning pipelines (Python, SciPy, MNE, PyEEG, feature engineering) and integrating native Kotlin modules for microcontrollers (STM32, Raspberry Pi Pico W)."
   },
   {
     q: "Why hire a developer with a software testing & QA background?",
@@ -409,6 +409,20 @@ export const skillCategories = [
     subtitle: "Server Architecture & WebSockets",
     icon: "⚙️",
     skills: ["Node.js", "Express.js", "REST APIs", "Socket.IO (Real-time)", "JWT Authentication", "PHP"]
+  },
+  {
+    title: "AI & Machine Learning",
+    subtitle: "Data Science, Signal & Model Pipelines",
+    icon: "🧠",
+    skills: [
+      "Machine Learning (ML)",
+      "Artificial Intelligence (AI)",
+      "Python ML (Scikit-Learn, SciPy)",
+      "Signal Processing (MNE, PyEEG)",
+      "Feature Engineering & Extraction",
+      "NumPy & Pandas",
+      "Model Evaluation & Classification"
+    ]
   },
   {
     title: "Programming Languages",

@@ -14,7 +14,7 @@ export default function Skills() {
         </div>
         <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight">Technical Skills Matrix</h2>
         <p className="text-slate-400 mt-4 text-base">
-          A full breakdown of frontend, backend, native mobile, languages, databases, and DevOps tools.
+          A full breakdown of frontend, backend, native mobile, AI & machine learning, databases, and DevOps tools.
         </p>
 
         {/* Live Search Input */}
@@ -24,7 +24,7 @@ export default function Skills() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full px-5 py-3 rounded-2xl bg-slate-900 border border-slate-700 focus:border-sky-400 text-white placeholder-slate-500 text-sm outline-none transition-all shadow-inner"
-            placeholder="🔍 Type to filter skills (e.g. React, Python, MongoDB, Docker)..."
+            placeholder="🔍 Type to filter skills (e.g. React, AI, Machine Learning, Python)..."
           />
         </div>
       </div>

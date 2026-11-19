@@ -28,7 +28,7 @@ export default function Projects() {
             { id: 'all', label: 'All Projects' },
             { id: 'fullstack', label: 'Full-Stack / MERN' },
             { id: 'mobile', label: 'Mobile & Embedded' },
-            { id: 'ml', label: 'Machine Learning' },
+            { id: 'ml', label: 'AI & Machine Learning' },
             { id: 'qa', label: 'QA & Testing' }
           ].map((tab) => (
             <button
